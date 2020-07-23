@@ -1,0 +1,14 @@
+<mat-accordion multi=true *ngIf="meetings.length!=0">
+  <mat-expansion-panel *ngFor="let meeting of meetings">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+       Meeting Id:  {{meeting.id}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Meeting Topic: {{meeting.topic }}</p>
+    <p>Start Time: {{meeting.start_time }}</p>
+    <button  mat-raised-button color="primary">Join</button>
+    <button (click)="onDeleteMeeting(meeting.id)" mat-raised-button color="warn">Delete</button>
+  </mat-expansion-panel>
+</mat-accordion>
+

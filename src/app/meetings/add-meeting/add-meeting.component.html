@@ -1,0 +1,32 @@
+<mat-card>
+  <form (submit)="onAddMeeting(addMeetingForm)" #addMeetingForm="ngForm" >
+  <mat-form-field>
+    <mat-label>Topic</mat-label>
+    <textarea matInput  name="topic" ngModel required minlength=3 #topic="ngModel"></textarea>
+    <mat-error *ngIf="topic.invalid">Enter a valid Topic</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Meeting Type</mat-label>
+    <mat-select  [(ngModel)]="selectedType" name="food" >
+      <mat-option *ngFor="let type of foodTypes"  [value]="type.value">
+        {{type.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Start Time</mat-label>
+    <input matInput  value="2020-07-24T12:02:00Z" name="start_time" ngModel required  #start_time="ngModel">
+    <mat-error *ngIf="start_time.invalid">Enter a valid Time</mat-error>
+  </mat-form-field>
+  <mat-form-field *ngIf="selectedType == 2">
+    <mat-label>Duration</mat-label>
+    <input matInput  name="duration" ngModel required  #duration="ngModel">
+    <mat-error *ngIf="duration.invalid">Enter a valid Duration</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput  name="password" ngModel minlength=3 maxlength=10 #password="ngModel">
+  </mat-form-field>
+  <button type="submit" mat-raised-button color='accent' >Save</button>
+</form>
+</mat-card>
